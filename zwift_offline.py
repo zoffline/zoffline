@@ -2004,6 +2004,9 @@ def v1_variant():
     jmf.name = 'game_1_13_japanese_medium_font'
     rcc = variants.variants.add()
     rcc.name = 'game_1_12_1_retire_client_chat_culling'
+    sa = variants.variants.add()
+    sa.name = 'steering_autopilot'
+    sa.value = 1
     return variants.SerializeToString(), 200
 
 
