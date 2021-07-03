@@ -319,6 +319,23 @@ To enable support for multiple users perform the steps below. zoffline's previou
   MinProtocol = TLSv1.0
   CipherString = DEFAULT@SECLEVEL=1
   ```
+ * To disable the web server that runs on port 80 and run your own apache web server you must comment out lines 616-620 in standalone.py:
+  ```
+  #socketserver.ThreadingTCPServer.allow_reuse_address = True
+  #httpd = socketserver.ThreadingTCPServer(('', 80), CDNHandler)
+  #zoffline_thread = threading.Thread(target=httpd.serve_forever)
+  #zoffline_thread.daemon = True
+  #zoffline_thread.start()
+  ```
+   * You must also disable the SSL web server by commenting out lines 1750-1751 in zwift_offline.py:
+  
+  ```
+  #server = WSGIServer(('0.0.0.0', 443), app, certfile='%s/cert-zwift-com.pem' % SSL_DIR, keyfile='%s/key-zwift-com.pem' % SSL_DIR, log=logger)
+  #server.serve_forever()
+  ```
+   * Instead of disabling the web server components, you can proxy both the unsecure port 80 connection and the SSL port 443 connection using apache virtual host with a few apache proxy modules. An example of these configurations is available under the apache directory.
+
+  
 </details>
 
 ## Community Discord and zoffline (online) server
