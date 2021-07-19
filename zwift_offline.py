@@ -1990,20 +1990,12 @@ def auth_realms_zwift_tokens_access_codes():
 @app.route('/v1/variant', methods=['POST'])
 def v1_variant():
     variants = variants_pb2.Variants()
-    asr = variants.variants.add()
-    asr.name = "game_1_13_activity_save_refactor"
-    asr.value = 1
     bbc = variants.variants.add()
     bbc.name = 'ble_background_callbacks'
     bbc.value = 1
     gxp = variants.variants.add()
     gxp.name = 'game_1_12_grapher_x_pos'
     gxp.value = 1
-    dfi = variants.variants.add()
-    dfi.name = 'wwise_deadlock_fix_ios'
-    dfi.value = 1
-    dft = variants.variants.add()
-    dft.name = 'wwise_deadlock_fix_tvos'
     sasr = variants.variants.add()
     sasr.name = ' game_1_12_pc_skip_activity_save_retry'
     rtw = variants.variants.add()
@@ -2024,6 +2016,17 @@ def v1_variant():
     sa = variants.variants.add()
     sa.name = 'steering_autopilot'
     sa.value = 1
+    df = variants.variants.add()
+    df.name = 'game_1_14_draftlock_fix'
+    df.value = 1
+    xpcv = variants.variants.add()
+    xpcv.name = 'xplatform_partner_connection_vitality'
+    ada = variants.variants.add()
+    ada.name = 'game_1_15_assert_disable_abort'
+    ada.value = 1
+    ffl = variants.variants.add()
+    ffl.name = 'game_1_15_fit_file_lifecycle'
+    ffl.value = 1
     return variants.SerializeToString(), 200
 
 
